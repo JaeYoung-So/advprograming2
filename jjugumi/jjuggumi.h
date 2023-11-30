@@ -9,6 +9,7 @@
 
 typedef struct {
 	char name[100];
+	int x, y;
 	int intel_buf, str_buf, stamina_buf;
 } ITEM;
 
@@ -26,7 +27,7 @@ typedef struct {
 PLAYER player[PLAYER_MAX];  // 구조체배열
 bool win[PLAYER_MAX]; // 기본값 true, 승리하면 false
 int n_player, n_alive, n_item;
-int tick;  // 시계
+int tick,tick2;  // 시계
 char messeage[100];
 
 // 미니게임

@@ -8,6 +8,7 @@
 
 void draw(void);
 void print_status(void);
+void print_status2(void);
 
 // (zero-base) row행, col열로 커서 이동
 void gotoxy(int row, int col) {
@@ -57,6 +58,13 @@ void display(void) {
 	gotoxy(N_ROW + 4, 0); // 추가로 표시할 정보가 있으면 맵과 상태창 사이의 빈 공간에 출력
 	print_status();
 }
+void display2(void) {
+	draw();
+	gotoxy(N_ROW + 4, 0);
+	print_status2();
+	gotoxy(N_ROW + 4, 0); // 추가로 표시할 정보가 있으면 맵과 상태창 사이의 빈 공간에 출력
+	print_status();
+}
 
 void draw(void) {
 	for (int row = 0; row < N_ROW; row++) {
@@ -74,12 +82,18 @@ void print_status(void) {
 	printf("\t\t\tintl\tstr\tstm\n");
 	for (int p = 0; p < n_player; p++) {
 		if (win[p] == true) {
-			printf("player %2d: %5s\t%d\t%d\t%d%\n", p, win[p] ? "Win" : "false",player[p].intel,player[p].str,player[p].stamina);
+			printf("player %2d: %5s\t%d\t%d\t%d%\t%s\n", p, win[p] ? "Win" : "false",player[p].intel,player[p].str,player[p].stamina,player[p].item.name);
 		}
 		else {
-			printf("player %2d: %5s\t%d\t%d\t%d%\n", p, player[p].is_alive ? "alive" : "DEAD", player[p].intel, player[p].str, player[p].stamina);
+			printf("player %2d: %5s\t%d\t%d\t%d%\t%s\n", p, player[p].is_alive ? "alive" : "DEAD", player[p].intel, player[p].str, player[p].stamina, player[p].item.name);
 		}
-		
+	}
+}
+void print_status2(void) {
+	printf("no. of players left: %d\n", n_alive);
+	printf("\t\t\tintl\tstr\tstm\n");
+	for (int p = 0; p < n_player; p++) {
+		printf("                                                                                 \n");
 	}
 }
 

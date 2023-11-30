@@ -35,7 +35,7 @@ int jjuggumi_init(void) {
 	n_alive = n_player;
 	for (int i= 0; i< n_player; i++) {
 		PLAYER* p = &player[i];// 파일에서각스탯최댓값읽기
-		fscanf_s(fp, "%s%d%d%d",p->name, (unsigned int)sizeof(p->name),&(p->intel), &(p->str));
+		fscanf_s(fp, "%s%d%d%d",p->name, (unsigned int)sizeof(p->name),&(p->intel), &(p->str),&(p->stamina));
 		//printf("%s\n",player[i].name);
 		p->stamina = 100; // 100%
 		
