@@ -58,6 +58,7 @@ void display(void) {
 	gotoxy(N_ROW + 4, 0); // 추가로 표시할 정보가 있으면 맵과 상태창 사이의 빈 공간에 출력
 	print_status();
 }
+
 void display2(void) {
 	draw();
 	gotoxy(N_ROW + 4, 0);

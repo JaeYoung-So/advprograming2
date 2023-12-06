@@ -49,14 +49,20 @@ void move_manual(key_t key) {
 	}
 
 	// 움직여서 놓일 자리
-	int nx, ny;
-	nx = px[0] + dx[dir];
-	ny = py[0] + dy[dir];
-	if (!placable(nx, ny)) {
-		return;
+	if (dir != 4) {
+		int nx, ny;
+		nx = px[0] + dx[dir];
+		ny = py[0] + dy[dir];
+		if (!placable(nx, ny)) {
+			return;
+		}
+		move_tail(0, nx, ny);
+	}
+	if (dir == 4) {
+
 	}
 
-	move_tail(0, nx, ny);
+	
 }
 
 // 0 <= dir < 4가 아니면 랜덤

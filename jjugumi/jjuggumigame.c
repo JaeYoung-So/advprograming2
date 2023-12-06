@@ -97,11 +97,11 @@ void ending(char messeage[]) {
 }
 int main(void) {
 	jjuggumi_init();
-	intro();
-	mugunghwa();
-	nightgame();
+	//intro();
+	//mugunghwa();
+	//nightgame();
 	//juldarigi();
-	//jebi();
+	jebi();
 	ending(messeage);
 	return 0;
 }

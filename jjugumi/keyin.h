@@ -12,6 +12,7 @@
 #define K_DOWN		80
 #define K_LEFT		75
 #define K_RIGHT		77
+#define K_SPACE     ' '
 #define K_QUIT		'q'
 #define K_UNDEFINED	'\0'
 
