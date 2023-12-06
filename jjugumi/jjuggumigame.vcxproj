@@ -187,6 +187,7 @@
     <ClCompile Include="keyin.c" />
 	<ClCompile Include="mugunghwa.c" />
     <ClCompile Include="nightgame.c" />
+	<ClCompile Include="jebi.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="canvas.h" />

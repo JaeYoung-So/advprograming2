@@ -529,7 +529,6 @@ void choose(int p,int p2) {
 }
 
 void playerfight(int p) {
-	int num;
 	for (int i = 0; i < n_player; i++) {
 		int new_x = px[p];
 		int new_y = py[p];
@@ -780,6 +779,17 @@ void nightgame(void) {
 		// player 0만 손으로 움직임(4방향)
 		key_t key = get_key();
 		if (key == K_QUIT) {
+			for (int i = 0; i < n_player; i++) {
+				if (player[i].is_alive == TRUE) {
+					double stemina = 0;
+					stemina = player[i].stamina;
+					stemina = stemina * 1.5;
+					player[i].stamina = (int)stemina;
+					if (player[i].stamina > 100) {
+						player[i].stamina = 100;
+					}
+				}
+			}
 			break;
 		}
 		else if (key != K_UNDEFINED) {

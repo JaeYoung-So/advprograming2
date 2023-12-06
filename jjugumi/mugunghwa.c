@@ -340,7 +340,6 @@ void safe_tail(int p, int nx, int ny) {
 }
 
 void mugunghwa() {
-	int num;
 	mugung_set();
 	display();
 	dialog("무궁화꽃이 피었습니다를 시작합니다.");

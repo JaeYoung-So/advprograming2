@@ -83,7 +83,7 @@ void move_tail(int player, int nx, int ny) {
 	py[p] = ny;
 }
 
-void sample(void) {
+void jebi(void) {
 	sample_init();
 
 	system("cls");
