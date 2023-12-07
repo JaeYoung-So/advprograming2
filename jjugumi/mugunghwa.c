@@ -444,7 +444,20 @@ void mugunghwa() {
 			tick = 500;
 		}
 	}
+
 	for (int i = 0; i < n_player; i++) {
+		if (player[i].is_alive == TRUE) {
+			double stemina = 0;
+			stemina = player[i].stamina;
+			stemina = stemina * 1.5;
+			player[i].stamina = (int)stemina;
+			if (player[i].stamina > 100) {
+				player[i].stamina = 100;
+			}
+		}
+	}
+
+	/*for (int i = 0; i < n_player; i++) {
 		if (win[i] == true) {
 			char playerNumber[10];
 			sprintf_s(playerNumber, sizeof(playerNumber), "%d", i); // 정수를 문자열로 변환
@@ -454,5 +467,5 @@ void mugunghwa() {
 	}
 	if (strlen(messeage) > 0) {
 		messeage[strlen(messeage) - 2] = '\0';
-	}
+	}*/
 }

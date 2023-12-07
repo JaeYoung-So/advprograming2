@@ -14,7 +14,7 @@
 char messeage[100];
 int jjuggumi_init(void);
 
-void ending(char mes[]);
+void ending(int i);
 // low 이상 high 이하 난수를 발생시키는 함수
 int randint(int low, int high) {
 	int rnum = rand() % (high - low + 1) + low;
@@ -46,7 +46,6 @@ int jjuggumi_init(void) {
 	
 	// 아이템데이터load
 	fscanf_s(fp, "%d", &n_item);
-	printf("%d",n_item);
 	for (int i= 0; i< n_item; i++) {
 		fscanf_s(fp, "%s%d%d%d",item[i].name, (unsigned int)sizeof(item[i].name),&(item[i].intel_buf),&(item[i].str_buf),&(item[i].stamina_buf));
 		//printf("%s,%d,%d,%d\n", item[i].name, item[i].intel_buf, item[i].str_buf, item[i].stamina_buf);
@@ -87,10 +86,10 @@ void intro() {
 
 	system("cls");
 }
-void ending(char messeage[]) {
+void ending(int i) {
 	system("cls");
 	printf("         **********************************\n");
-	printf("           %s 번 플레이어가 승리하였습니다.\n",messeage);
+	printf("           %d 번 플레이어 %s 가 승리하였습니다.\n",i,player[i].name);
 	printf("         **********************************\n");
 	Sleep(3000);
 
@@ -102,6 +101,10 @@ int main(void) {
 	nightgame();
 	//juldarigi();
 	jebi();
-	ending(messeage);
+	for (int i = 0; i < n_player; i++) {
+		if (player[i].is_alive == TRUE) {
+			ending(i);
+		}
+	}
 	return 0;
 }

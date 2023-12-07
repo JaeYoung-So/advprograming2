@@ -78,7 +78,9 @@ void live_init(void) {
 void death_init(void) {
 	map_init(7, (n_alive * 3) + 4);
 	int x, y;
-	death = randint(0, n_alive - 1);
+	if (n_alive > 1) {
+		death = randint(0, n_alive - 1);
+	}
 	for (int i = 0; i < n_alive; i++) {
 		if (i == death) {
 			pass[i] = FALSE;
@@ -107,7 +109,6 @@ void death_init(void) {
 }
 void move_manualjebi(key_t key) {
 	// 각 방향으로 움직일 때 x, y값 delta
-	static int dx[4] = { 0, 0, -3, 3 };
 	static int dy[4] = { 0, 0, -3, 3 };
 
 	int dir;  // 움직일 방향(0~3)
@@ -163,7 +164,17 @@ void checkpass(int p) {
 		player[p].is_alive = FALSE;
 		now = 0;
 		n_alive--;
-		pp = 0;
+		if (player[0].is_alive == TRUE) {
+			pp = 0;
+		}
+		else {
+			for (int i = 0; i < n_player; i++) {
+				if (player[i].is_alive == TRUE) {
+					pp = i;
+					break;
+				}
+			}
+		}
 		round++;
 		passjebi = n_alive;
 		system("cls");
@@ -233,15 +244,12 @@ void passlog(int i){
 }
 
 void jebi(void) {
-	/*//testcode
-	for (int i = 0; i < n_player; i++) {
-		player[i].is_alive = TRUE;
-	}
-	//testcode*/
+
 	jebi_init();
 	system("cls");
 	display();
 	while (1) {
+		int count=0;
 		key_t key = get_key();
 		if (key == K_QUIT) {
 			break;
@@ -253,8 +261,17 @@ void jebi(void) {
 		display();
 		gotoxy(N_ROW+1, 0);
 		printf("%d round, turn : player %d", round, pp);
-		gotoxy(20, 0);
-		printf("death : %d,now : %d", death, now);
+		//gotoxy(20, 0);
+		//printf("death : %d,now : %d", death, now);
+		
+		for (int i = 0; i < n_player; i++) {
+			if (player[i].is_alive == TRUE) {
+				count++;
+			}
+		}
+		if (count == 1) {
+			return;
+		}
 		Sleep(10);
 		tick += 10;
 	}

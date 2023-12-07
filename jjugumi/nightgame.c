@@ -317,107 +317,109 @@ void get_zero_item(void) {
 }
 
 void getitem(void) {
-		for (int i = 1; i < n_player; i++) {
+	for (int i = 1; i < n_player; i++) {
+		if (player[i].is_alive == TRUE) {
 			if (player[i].hasitem == FALSE) {
-				int new_x = px[i];
-				int new_y = py[i];
-				int item_num;
-				if (back_buf[new_x][new_y - 1] == 'I' || back_buf[new_x][new_y + 1] == 'I' ||
-					back_buf[new_x - 1][new_y] == 'I' || back_buf[new_x + 1][new_y] == 'I') {
-
-					if (back_buf[new_x][new_y - 1] == 'I') {
-						item_num = finditem(new_x, new_y-1);
-						if (item_num != -1) {
-							player[i].item = item[item_num];
-							player[i].hasitem = TRUE;
-							back_buf[new_x][new_y - 1] = ' ';
-							controlsituation(i, item[item_num], FALSE);
-							
-						}
-					}
-					else if (back_buf[new_x][new_y + 1] == 'I') {
-						item_num = finditem(new_x, new_y+1);
-						if (item_num != -1) {
-							player[i].item = item[item_num];
-							player[i].hasitem = TRUE;
-							back_buf[new_x][new_y + 1] = ' ';
-							controlsituation(i, item[item_num], FALSE);
-							itemidalog(i);
-						}
-					}
-					else if (back_buf[new_x - 1][new_y] == 'I') {
-						item_num = finditem(new_x-1, new_y);
-						if (item_num != -1) {
-							player[i].item = item[item_num];
-							player[i].hasitem = TRUE;
-							back_buf[new_x - 1][new_y] = ' ';
-							controlsituation(i, item[item_num], FALSE);
-							itemidalog(i);
-						}
-					}
-					else {
-						item_num = finditem(new_x+1, new_y);
-						if (item_num != -1) {
-							player[i].item = item[item_num];
-							player[i].hasitem = TRUE;
-							back_buf[new_x + 1][new_y] = ' ';
-							controlsituation(i, item[item_num], FALSE);
-							itemidalog(i);
-						}
-					}
-
-				}
-			}
-			else {
-				int rand = randint(0, 1);
-				if (rand == 1) {
 					int new_x = px[i];
 					int new_y = py[i];
 					int item_num;
-					
 					if (back_buf[new_x][new_y - 1] == 'I' || back_buf[new_x][new_y + 1] == 'I' ||
 						back_buf[new_x - 1][new_y] == 'I' || back_buf[new_x + 1][new_y] == 'I') {
 
 						if (back_buf[new_x][new_y - 1] == 'I') {
-							item_num = finditem(new_x, new_y-1);
+							item_num = finditem(new_x, new_y - 1);
 							if (item_num != -1) {
-								changeitem(i, item_num);
-								back_buf[new_x][new_y - 1] = 'I';
-								controlsituation(i, item[item_num], TRUE);
-								itemidalog(i);
+								player[i].item = item[item_num];
+								player[i].hasitem = TRUE;
+								back_buf[new_x][new_y - 1] = ' ';
+								controlsituation(i, item[item_num], FALSE);
+
 							}
 						}
 						else if (back_buf[new_x][new_y + 1] == 'I') {
-							item_num = finditem(new_x, new_y+1);
+							item_num = finditem(new_x, new_y + 1);
 							if (item_num != -1) {
-								changeitem(i,item_num);
-								back_buf[new_x][new_y + 1] = 'I';
-								controlsituation(i, item[item_num], TRUE);
+								player[i].item = item[item_num];
+								player[i].hasitem = TRUE;
+								back_buf[new_x][new_y + 1] = ' ';
+								controlsituation(i, item[item_num], FALSE);
 								itemidalog(i);
 							}
 						}
 						else if (back_buf[new_x - 1][new_y] == 'I') {
-							item_num = finditem(new_x-1, new_y);
+							item_num = finditem(new_x - 1, new_y);
 							if (item_num != -1) {
-								changeitem(i,item_num);
-								back_buf[new_x - 1][new_y] = 'I';
-								controlsituation(i, item[item_num], TRUE);
+								player[i].item = item[item_num];
+								player[i].hasitem = TRUE;
+								back_buf[new_x - 1][new_y] = ' ';
+								controlsituation(i, item[item_num], FALSE);
 								itemidalog(i);
 							}
 						}
 						else {
-							item_num = finditem(new_x+1, new_y);
+							item_num = finditem(new_x + 1, new_y);
 							if (item_num != -1) {
-								changeitem(i,item_num);
-								back_buf[new_x + 1][new_y] = 'I';
-								controlsituation(i, item[item_num], TRUE);
+								player[i].item = item[item_num];
+								player[i].hasitem = TRUE;
+								back_buf[new_x + 1][new_y] = ' ';
+								controlsituation(i, item[item_num], FALSE);
 								itemidalog(i);
+							}
+						}
+
+					}
+				}
+			else {
+					int rand = randint(0, 1);
+					if (rand == 1) {
+						int new_x = px[i];
+						int new_y = py[i];
+						int item_num;
+
+						if (back_buf[new_x][new_y - 1] == 'I' || back_buf[new_x][new_y + 1] == 'I' ||
+							back_buf[new_x - 1][new_y] == 'I' || back_buf[new_x + 1][new_y] == 'I') {
+
+							if (back_buf[new_x][new_y - 1] == 'I') {
+								item_num = finditem(new_x, new_y - 1);
+								if (item_num != -1) {
+									changeitem(i, item_num);
+									back_buf[new_x][new_y - 1] = 'I';
+									controlsituation(i, item[item_num], TRUE);
+									itemidalog(i);
+								}
+							}
+							else if (back_buf[new_x][new_y + 1] == 'I') {
+								item_num = finditem(new_x, new_y + 1);
+								if (item_num != -1) {
+									changeitem(i, item_num);
+									back_buf[new_x][new_y + 1] = 'I';
+									controlsituation(i, item[item_num], TRUE);
+									itemidalog(i);
+								}
+							}
+							else if (back_buf[new_x - 1][new_y] == 'I') {
+								item_num = finditem(new_x - 1, new_y);
+								if (item_num != -1) {
+									changeitem(i, item_num);
+									back_buf[new_x - 1][new_y] = 'I';
+									controlsituation(i, item[item_num], TRUE);
+									itemidalog(i);
+								}
+							}
+							else {
+								item_num = finditem(new_x + 1, new_y);
+								if (item_num != -1) {
+									changeitem(i, item_num);
+									back_buf[new_x + 1][new_y] = 'I';
+									controlsituation(i, item[item_num], TRUE);
+									itemidalog(i);
+								}
 							}
 						}
 					}
 				}
-			}
 		}
+	}
 }
 
 void changeitem(int p, int i) {
@@ -767,7 +769,6 @@ void controlsituation(int i,ITEM item,bool changeitem) {
 	}
 	
 }
-
 
 void nightgame(void) {
 	night_init();
