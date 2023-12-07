@@ -233,11 +233,11 @@ void passlog(int i){
 }
 
 void jebi(void) {
-	//testcode
+	/*//testcode
 	for (int i = 0; i < n_player; i++) {
 		player[i].is_alive = TRUE;
 	}
-	//testcode
+	//testcode*/
 	jebi_init();
 	system("cls");
 	display();
