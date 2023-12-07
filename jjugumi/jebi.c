@@ -261,8 +261,6 @@ void jebi(void) {
 		display();
 		gotoxy(N_ROW+1, 0);
 		printf("%d round, turn : player %d", round, pp);
-		//gotoxy(20, 0);
-		//printf("death : %d,now : %d", death, now);
 		
 		for (int i = 0; i < n_player; i++) {
 			if (player[i].is_alive == TRUE) {
